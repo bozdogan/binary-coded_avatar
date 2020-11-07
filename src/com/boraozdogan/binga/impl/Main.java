@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import javax.swing.*;
 
+/** Binary-Coded GitHub Avatar (BinGA) Creator */
 public class Main
 {
     static Scanner stdin = new Scanner(System.in);
@@ -133,3 +134,6 @@ public class Main
         System.out.println();
     }
 }
+
+// 2020-07-11
+// b.ozdogan
