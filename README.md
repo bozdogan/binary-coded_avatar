@@ -4,7 +4,7 @@ Enterprise-ready state-of-the-art avatar generator toolkit. Similar to an identi
 but the picture is created directly from binary code of given text. Hence, worse looking.
 Currently under heavy agile development. All the known "design patterns" is going to be 
 applied to the codebase eventually, even it they don't fit. We aim for Mobile-First 
-Approach&trade;but currently don't have a UI/UX designer so we hired a Full-Stack Frontend 
+Approach&trade; but currently don't have a UI/UX designer so we hired a Full-Stack Frontend 
 designer who can barely design a Swing `JFrame`.
 
 As you can see we're pretty fucked up. But we're not hopeless. We have hope. Some day
