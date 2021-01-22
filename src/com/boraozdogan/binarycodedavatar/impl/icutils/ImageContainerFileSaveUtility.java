@@ -16,17 +16,17 @@ public class ImageContainerFileSaveUtility
 
     public ImageContainerFileSaveUtility(ImageContainer newImageContainer, File newObjectForFileHandling)
     {
-        imageContainer = newImageContainer;
-        objectForFileHandling = newObjectForFileHandling;
+        this.imageContainer = newImageContainer;
+        this.objectForFileHandling = newObjectForFileHandling;
     }
 
     public void setPictureFormatIdentifier(String newPictureFormatIdentifierString)
     {
-        pictureFormatIdentifierString = newPictureFormatIdentifierString;
+        this.pictureFormatIdentifierString = newPictureFormatIdentifierString;
     }
 
     public void executeFileSavingProcess() throws IOException
     {
-        ImageIO.write(imageContainer.getImageHandle(), pictureFormatIdentifierString, objectForFileHandling);
+        ImageIO.write(this.imageContainer.getImageHandle(), this.pictureFormatIdentifierString, this.objectForFileHandling);
     }
 }

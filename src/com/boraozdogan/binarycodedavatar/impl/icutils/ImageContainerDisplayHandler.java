@@ -9,11 +9,11 @@ public class ImageContainerDisplayHandler
 
     public ImageContainerDisplayHandler(ImageContainer newImageContainer)
     {
-        imageContainer = newImageContainer;
+        this.imageContainer = newImageContainer;
     }
 
     public void executeDisplayProcedure(PreparedBitmapDisplayProcedure pbdp)
     {
-        pbdp.runBitmapDisplayProcedure(imageContainer.getImageHandle());
+        pbdp.runBitmapDisplayProcedure(this.imageContainer.getImageHandle());
     }
 }

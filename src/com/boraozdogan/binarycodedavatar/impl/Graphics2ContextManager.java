@@ -24,16 +24,16 @@ public class Graphics2ContextManager
 
     public void setActiveImageContainer(ImageContainer newImageContainer)
     {
-        activeImageContainer = newImageContainer;
+        this.activeImageContainer = newImageContainer;
     }
 
     public void createGraphicsContextForActiveImage()
     {
-        activeImageGraphicsContext = activeImageContainer.getImageHandle().createGraphics();
+        this.activeImageGraphicsContext = this.activeImageContainer.getImageHandle().createGraphics();
     }
 
     public Graphics2D getActiveGraphicsContextHandle()
     {
-        return activeImageGraphicsContext;
+        return this.activeImageGraphicsContext;
     }
 }

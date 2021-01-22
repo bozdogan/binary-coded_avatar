@@ -10,26 +10,26 @@ public class ImageContainer
 
     public ImageContainer()
     {
-        metadata = new HashMap<>();
+        this.metadata = new HashMap<>();
     }
 
     public void setMetadata(String key, Object value)
     {
-        metadata.put(key, value);
+        this.metadata.put(key, value);
     }
 
     public void createNew()
     {
         // TODO(bora): Extraction of metadata should be done a separate class.
         // It varies!!
-        Integer valueofWdt = Integer.valueOf((String) metadata.get("imgwdt"));
-        Integer valueofHgt = Integer.valueOf((String) metadata.get("imghgt"));
-        Integer valueofTyp = Integer.valueOf((String) metadata.get("imgtyp"));
-        i = new BufferedImage(valueofWdt, valueofHgt, valueofTyp);
+        Integer valueofWdt = Integer.valueOf((String) this.metadata.get("imgwdt"));
+        Integer valueofHgt = Integer.valueOf((String) this.metadata.get("imghgt"));
+        Integer valueofTyp = Integer.valueOf((String) this.metadata.get("imgtyp"));
+        this.i = new BufferedImage(valueofWdt, valueofHgt, valueofTyp);
     }
 
     public BufferedImage getImageHandle()
     {
-        return i;
+        return this.i;
     }
 }
