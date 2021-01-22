@@ -6,4 +6,6 @@ public class Constants
     public final static String DEBUG_BIT_MATRIX_PRINTER_ONE_CHAR = "<>";
     public final static String DEBUG_BIT_MATRIX_PRINTER_ZERO_CHAR = "´´";
     public final static int INTEGER_MULTIPLIER_TWO = (int) Integer.valueOf(2);
+
+    public final static String IDENTIFIER_STRING_FOR_PNG_PICTURE_FORMAT = "png";
 }

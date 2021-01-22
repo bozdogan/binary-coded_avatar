@@ -1,15 +1,19 @@
 package com.boraozdogan.binarycodedavatar.impl;
 
 import com.boraozdogan.binarycodedavatar.impl.conf.ConfigurationProviderSingleton;
-import static com.boraozdogan.binarycodedavatar.impl.Constants.INTEGER_MULTIPLIER_TWO;
+import com.boraozdogan.binarycodedavatar.impl.icutils.ImageContainerDisplayHandler;
+import com.boraozdogan.binarycodedavatar.impl.icutils.ImageContainerFileSaveUtility;
 
-import javax.imageio.ImageIO;
+import static com.boraozdogan.binarycodedavatar.impl.Constants.INTEGER_MULTIPLIER_TWO;
+import static com.boraozdogan.binarycodedavatar.impl.Constants.IDENTIFIER_STRING_FOR_PNG_PICTURE_FORMAT;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /** Binary-Coded GitHub Avatar (BinGA) Creator */
@@ -83,8 +87,17 @@ public class Main
         int contentSize = (width + unitOffsetH) * unitSize;
         int imgSize = contentSize + INTEGER_MULTIPLIER_TWO * frameThickness;
 
-        BufferedImage picture = new BufferedImage(imgSize, imgSize, BufferedImage.TYPE_INT_RGB);
-        Graphics2D gfx = picture.createGraphics();
+        Graphics2ContextManager ctxman = Graphics2ContextManager.getInstance();
+
+        ImageContainer ic = new ImageContainer();
+        ic.setMetadata("imgwdt", Integer.valueOf(imgSize).toString());
+        ic.setMetadata("imghgt", Integer.valueOf(imgSize).toString());
+        ic.setMetadata("imgtyp", Character.toString('1'));
+        ic.createNew();
+        ctxman.setActiveImageContainer(ic);
+        
+        ctxman.createGraphicsContextForActiveImage();
+        Graphics2D gfx = ctxman.getActiveGraphicsContextHandle();
 
         Color bgColor = Color.LIGHT_GRAY;
         Color zeroColor = Color.WHITE;
@@ -112,13 +125,16 @@ public class Main
         gfx.dispose();
 
         // *. (optional) display image
-        DisplayBitmap(picture);
+        ImageContainerDisplayHandler disphdl = new ImageContainerDisplayHandler(ic);
+        disphdl.executeDisplayProcedure(Main::DisplayBitmap);
         
         // 6. save image
         try
         {
             File file = new File("github_avatar.png");
-            ImageIO.write(picture, "png", file);
+            ImageContainerFileSaveUtility icfsu = new ImageContainerFileSaveUtility(ic, file);
+            icfsu.setPictureFormatIdentifier(IDENTIFIER_STRING_FOR_PNG_PICTURE_FORMAT);
+            icfsu.executeFileSavingProcess();
         }
         catch(IOException e)
         {
