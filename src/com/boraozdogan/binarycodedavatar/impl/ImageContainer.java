@@ -1,5 +1,8 @@
 package com.boraozdogan.binarycodedavatar.impl;
 
+import com.boraozdogan.binarycodedavatar.impl.util.ImageContainerMetadataResultSet;
+import com.boraozdogan.binarycodedavatar.impl.util.MetadataExtractionHelper;
+
 import java.awt.image.BufferedImage;
 import java.util.*;
 
@@ -20,11 +23,11 @@ public class ImageContainer
 
     public void createNew()
     {
-        // TODO(bora): Extraction of metadata should be done a separate class.
-        // It varies!!
-        Integer valueofWdt = Integer.valueOf((String) this.metadata.get("imgwdt"));
-        Integer valueofHgt = Integer.valueOf((String) this.metadata.get("imghgt"));
-        Integer valueofTyp = Integer.valueOf((String) this.metadata.get("imgtyp"));
+        MetadataExtractionHelper mdeh = new MetadataExtractionHelper();
+        ImageContainerMetadataResultSet mdrs = mdeh.extractMetadataOf(this);
+        Integer valueofWdt = mdrs.getWtd();
+        Integer valueofHgt = mdrs.getHgt();
+        Integer valueofTyp = mdrs.getTyp();
         this.i = new BufferedImage(valueofWdt, valueofHgt, valueofTyp);
     }
 
