@@ -5,8 +5,8 @@ import java.awt.*;
 public class Graphics2ContextManager
 {
     private static Graphics2ContextManager object;
-    private ImageContainer activeImageContainer;
-    private Graphics2D activeImageGraphicsContext;
+    private ImageContainer currentlyActiveImageContainer;
+    private Graphics2D currentlyActiveImageGraphicsContext;
 
     private Graphics2ContextManager()
     {
@@ -22,18 +22,18 @@ public class Graphics2ContextManager
         return object;
     }
 
-    public void setActiveImageContainer(ImageContainer newImageContainer)
+    public void setCurrentlyActiveImageContainer(ImageContainer newImageContainer)
     {
-        this.activeImageContainer = newImageContainer;
+        this.currentlyActiveImageContainer = newImageContainer;
     }
 
     public void createGraphicsContextForActiveImage()
     {
-        this.activeImageGraphicsContext = this.activeImageContainer.getImageHandle().createGraphics();
+        this.currentlyActiveImageGraphicsContext = this.currentlyActiveImageContainer.getImageHandle().createGraphics();
     }
 
-    public Graphics2D getActiveGraphicsContextHandle()
+    public Graphics2D getCurrentlyActiveGraphicsContextHandle()
     {
-        return this.activeImageGraphicsContext;
+        return this.currentlyActiveImageGraphicsContext;
     }
 }

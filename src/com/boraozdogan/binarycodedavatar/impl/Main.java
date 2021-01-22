@@ -13,7 +13,6 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /** Binary-Coded GitHub Avatar (BinGA) Creator */
@@ -94,10 +93,10 @@ public class Main
         ic.setMetadata("imghgt", Integer.valueOf(imgSize).toString());
         ic.setMetadata("imgtyp", Character.toString('1'));
         ic.createNew();
-        ctxman.setActiveImageContainer(ic);
+        ctxman.setCurrentlyActiveImageContainer(ic);
         
         ctxman.createGraphicsContextForActiveImage();
-        Graphics2D gfx = ctxman.getActiveGraphicsContextHandle();
+        Graphics2D gfx = ctxman.getCurrentlyActiveGraphicsContextHandle();
 
         Color bgColor = Color.LIGHT_GRAY;
         Color zeroColor = Color.WHITE;
